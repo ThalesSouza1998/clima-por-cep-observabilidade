@@ -1,0 +1,41 @@
+services:
+  servico-a:
+    build: .
+    image: clima-por-cep-observabilidade:local
+    command: ["servico-a"]
+    environment:
+      SERVICO_B_URL: http://servico-b:8081
+      OTEL_EXPORTER_OTLP_ENDPOINT: http://otel-collector:4318
+      PORT: "8080"
+    ports:
+      - "8080:8080"
+    depends_on:
+      - servico-b
+      - otel-collector
+
+  servico-b:
+    build: .
+    image: clima-por-cep-observabilidade:local
+    command: ["servico-b"]
+    environment:
+      WEATHER_API_KEY: ${WEATHER_API_KEY}
+      OTEL_EXPORTER_OTLP_ENDPOINT: http://otel-collector:4318
+      PORT: "8081"
+    depends_on:
+      - otel-collector
+
+  otel-collector:
+    image: otel/opentelemetry-collector-contrib:0.163.2
+    command: ["--config=/etc/otelcol-contrib/config.yaml"]
+    volumes:
+      - ./otel-collector-config.yaml:/etc/otelcol-contrib/config.yaml:ro
+    ports:
+      - "4317:4317"
+      - "4318:4318"
+    depends_on:
+      - zipkin
+
+  zipkin:
+    image: openzipkin/zipkin:3.6.1
+    ports:
+      - "9411:9411"
