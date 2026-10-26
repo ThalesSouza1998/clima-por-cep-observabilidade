@@ -51,7 +51,7 @@ func TestHandlerClima(t *testing.T) {
 				"city":   "Linhares",
 				"temp_C": 23.0,
 				"temp_F": 73.4,
-				"temp_K": 296.15,
+				"temp_K": 296.0,
 			},
 		},
 		{

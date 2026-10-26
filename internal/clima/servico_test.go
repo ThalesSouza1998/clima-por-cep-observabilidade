@@ -42,7 +42,7 @@ func TestServicoPorCEP(t *testing.T) {
 			cep:        "29902555",
 			busca:      buscaFalsa{cidade: "Linhares"},
 			termometro: termometroFalso{celsius: 23},
-			quer:       Clima{Cidade: "Linhares", Celsius: 23, Fahrenheit: 73.4, Kelvin: 296.15},
+			quer:       Clima{Cidade: "Linhares", Celsius: 23, Fahrenheit: 73.4, Kelvin: 296},
 		},
 		{
 			nome:     "cep vazio",

@@ -61,7 +61,7 @@ Resposta:
   "city": "Linhares",
   "temp_C": 23,
   "temp_F": 73.4,
-  "temp_K": 296.15
+  "temp_K": 296
 }
 ```
 
@@ -175,8 +175,8 @@ Dockerfile
 
 ## Detalhes de implementação
 
-- A conversão para Kelvin usa `273.15`. O Fahrenheit é arredondado para uma
-  casa decimal e o Kelvin para duas.
+- A conversão para Kelvin usa `273`. O Fahrenheit é arredondado para uma casa
+  decimal e o Kelvin para duas.
 - As chamadas externas têm timeout de 10 segundos; a chamada de A para B tem
   timeout de 15 segundos.
 - O `service.name` do resource é `servico-a` ou `servico-b`, e é o nome que

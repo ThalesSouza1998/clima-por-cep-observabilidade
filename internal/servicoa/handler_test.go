@@ -24,7 +24,7 @@ func TestHandlerEncaminhaParaServicoB(t *testing.T) {
 		recebidos <- string(corpo)
 
 		w.Header().Set("Content-Type", "application/json")
-		_, _ = w.Write([]byte(`{"city":"Linhares","temp_C":23,"temp_F":73.4,"temp_K":296.15}`))
+		_, _ = w.Write([]byte(`{"city":"Linhares","temp_C":23,"temp_F":73.4,"temp_K":296}`))
 	}))
 	defer servidorB.Close()
 
